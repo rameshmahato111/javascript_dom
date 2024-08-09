@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fetch Data</title>
+    </head>
+
+    <body>
+
+        <div>
+
+        </div>
+        <script>
+            fetch(`https://fakestoreapi.com/users`)
+                .then(res => res.json())
+                .then(users => {
+                    console.log(users)
+                    let allUsers =""
+                        users.map((usr) => {
+                            return allUsers += `<div>
+                    <h1>${usr.email}</h1>
+                    <h2>$${usr.username}</h2>
+                    <h2>$${usr.password}</h2>
+                    <h2>$${usr.address.city}</h2>
+                    <h2>$${usr.firstname}</h2>
+
+
+
+                    </div>`
+                        })
+
+                    document.querySelector('div').innerHTML = allUsers
+                    
+                })
+                .catch(error => console.log(error))
+
+
+
+        </script>
+    </body>
+
+</html>
